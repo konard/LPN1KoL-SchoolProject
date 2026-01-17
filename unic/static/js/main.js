@@ -44,7 +44,7 @@ function submit_func() {
                     '</div>'
             } else {
                 // Отображаем ошибку
-                modalContent.innerHTML = '<h2>Ошибка</h2><p>Произошла ошибка при обработке запроса: ' +
+                modalContent.innerHTML = '<p>Произошла ошибка при обработке запроса: ' +
                     (response.error || 'Неизвестная ошибка') + '</p>'
             }
 
@@ -54,7 +54,7 @@ function submit_func() {
         } else {
             console.error('Ошибка запроса:', xhr.status)
             const modalContent = document.querySelector('.modal-content')
-            modalContent.innerHTML = '<h2>Ошибка</h2><p>Не удалось отправить форму. Попробуйте еще раз.</p>'
+            modalContent.innerHTML = '<p>Не удалось отправить форму. Попробуйте еще раз.</p>'
             modalOverlay.classList.add('show')
             submitBtn.disabled = false
             submitBtn.textContent = "Отправить"
@@ -64,7 +64,7 @@ function submit_func() {
     xhr.onerror = function() {
         console.error('Ошибка сети')
         const modalContent = document.querySelector('.modal-content')
-        modalContent.innerHTML = '<h2>Ошибка</h2><p>Ошибка соединения. Проверьте подключение к интернету.</p>'
+        modalContent.innerHTML = '<p>Ошибка соединения. Проверьте подключение к интернету.</p>'
         modalOverlay.classList.add('show')
         submitBtn.disabled = false
         submitBtn.textContent = "Отправить"
