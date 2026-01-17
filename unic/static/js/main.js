@@ -34,12 +34,40 @@ function submit_func() {
 
     xhr.onload = function() {
         if (xhr.status === 200) {
+            const response = xhr.response
+            const modalContent = document.querySelector('.modal-content')
+
+            if (response.success) {
+                // Отображаем рекомендации от ИИ
+                modalContent.innerHTML = '<h2>Рекомендации по профориентации</h2><div class="recommendation-text">' +
+                    response.recommendation.replace(/\n/g, '<br>') +
+                    '</div>'
+            } else {
+                // Отображаем ошибку
+                modalContent.innerHTML = '<h2>Ошибка</h2><p>Произошла ошибка при обработке запроса: ' +
+                    (response.error || 'Неизвестная ошибка') + '</p>'
+            }
+
             modalOverlay.classList.add('show')
             submitBtn.disabled = false
             submitBtn.textContent = "Отправить"
         } else {
-            console.error(xhr.error)
+            console.error('Ошибка запроса:', xhr.status)
+            const modalContent = document.querySelector('.modal-content')
+            modalContent.innerHTML = '<h2>Ошибка</h2><p>Не удалось отправить форму. Попробуйте еще раз.</p>'
+            modalOverlay.classList.add('show')
+            submitBtn.disabled = false
+            submitBtn.textContent = "Отправить"
         }
+    }
+
+    xhr.onerror = function() {
+        console.error('Ошибка сети')
+        const modalContent = document.querySelector('.modal-content')
+        modalContent.innerHTML = '<h2>Ошибка</h2><p>Ошибка соединения. Проверьте подключение к интернету.</p>'
+        modalOverlay.classList.add('show')
+        submitBtn.disabled = false
+        submitBtn.textContent = "Отправить"
     }
 
     xhr.send(JSON.stringify(formData))
