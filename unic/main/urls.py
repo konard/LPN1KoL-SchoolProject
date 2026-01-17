@@ -4,4 +4,5 @@ from .views import *
 urlpatterns = [
     path('', main),
     path('favicon.ico', favicon),
+    path('submit_form', submit_form),
 ]

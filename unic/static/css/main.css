@@ -149,13 +149,9 @@ h1 {
 }
 
 .submit-btn:disabled {
-    background-color: #95a5a6;
+    background-color: #8c9aac;
     cursor: not-allowed;
     transform: none;
-}
-
-.submit-btn:disabled:hover {
-    background-color: #95a5a6;
 }
 
 /* Spinner animation */
@@ -202,8 +198,8 @@ h1 {
     border-radius: 16px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
     padding: 2.5rem;
-    max-width: 800px;
-    width: 90%;
+    height: 80%;
+    width: 70%;
     position: relative;
     transform: scale(0.7);
     opacity: 0;

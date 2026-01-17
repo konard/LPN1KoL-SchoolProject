@@ -11,10 +11,9 @@
 
 <div class="content">
     <div class="survey-container">
-        <h1>Опрос</h1>
+        <h1>Проф. ориентационный опрос</h1>
 
         <form class="survey-form">
-            <!-- Radio button questions -->
             <div class="question-block">
                 <p class="question-title">1. Какой тип задач вам интереснее всего решать?</p>
                 <div class="radio-group">
@@ -26,7 +25,7 @@
                         <input type="radio" name="question1" value="creative">
                         <span>Творческие (дизайн, создание нового, искусство)</span>
                     </label>
-                    <label class="radio-option">
+                    <label class="radio-option"> 
                         <input type="radio" name="question1" value="social">
                         <span>Социальные (общение, помощь людям, работа в команде)</span>
                     </label>
@@ -157,7 +156,7 @@
                 </div>
             </div>
 
-            <!-- Text input questions -->
+
             <div class="question-block">
                 <label for="text-question1" class="question-title">6. Опишите ваш самый успешный проект или достижение за последние 2-3 года. Что именно вы делали, почему это было важно для вас и какие качества помогли вам достичь успеха?</label>
                 <input type="text" id="text-question1" name="text-question1" class="text-input" placeholder="Введите ваш ответ...">
@@ -184,7 +183,7 @@
             </div>
 
             <!-- Submit button -->
-            <button type="button" class="submit-btn">Отправить</button>
+            <button type="button" class="submit-btn" onclick="submit_func()">Отправить</button>
         </form>
     </div>
 </div>
@@ -192,9 +191,9 @@
 <!-- Modal overlay -->
 <div class="modal-overlay" id="modalOverlay">
     <div class="modal">
-        <button class="close-btn" id="closeBtn">&times;</button>
+        <button class="close-btn" id="closeBtn" onclick="document.getElementById('modalOverlay').classList.remove('show')">&times;</button>
         <div class="modal-content">
-            <!-- Empty modal content as per requirements -->
+
         </div>
     </div>
 </div>

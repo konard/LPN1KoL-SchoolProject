@@ -1,46 +1,46 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const submitBtn = document.querySelector('.submit-btn');
-    const modalOverlay = document.getElementById('modalOverlay');
-    const closeBtn = document.getElementById('closeBtn');
+const modalOverlay = document.getElementById('modalOverlay')
 
-    // Store original button text
-    const originalBtnText = submitBtn.textContent;
+modalOverlay.addEventListener('click', function(e) {
+    if (e.target === modalOverlay) {
+        modalOverlay.classList.remove('show')
+    }
+})
 
-    // Handle submit button click
-    submitBtn.addEventListener('click', function() {
-        // Disable button
-        submitBtn.disabled = true;
 
-        // Replace text with spinner
-        submitBtn.innerHTML = '<span class="spinner"></span>';
+function submit_func() {
+    const submitBtn = document.querySelector('.submit-btn')
 
-        // After 2 seconds, show modal
-        setTimeout(function() {
-            // Show modal with animation
-            modalOverlay.classList.add('show');
+    submitBtn.disabled = true
+    submitBtn.innerHTML = '<span class="spinner"></span>'
 
-            // Re-enable button and restore text
-            submitBtn.disabled = false;
-            submitBtn.textContent = originalBtnText;
-        }, 2000);
-    });
+    xhr = new XMLHttpRequest()
+    xhr.open("POST", "/submit_form", true)
+    xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
+    xhr.responseType = 'json'
 
-    // Handle close button click
-    closeBtn.addEventListener('click', function() {
-        modalOverlay.classList.remove('show');
-    });
+    let formData = {}
 
-    // Close modal when clicking outside of it
-    modalOverlay.addEventListener('click', function(e) {
-        if (e.target === modalOverlay) {
-            modalOverlay.classList.remove('show');
+    document.getElementsByName('question1').forEach((elem) => {if (elem.checked) {formData['question1'] = elem.value}})
+    document.getElementsByName('question2').forEach((elem) => {if (elem.checked) {formData['question2'] = elem.value}})
+    document.getElementsByName('question3').forEach((elem) => {if (elem.checked) {formData['question3'] = elem.value}})
+    document.getElementsByName('question4').forEach((elem) => {if (elem.checked) {formData['question4'] = elem.value}})
+    document.getElementsByName('question5').forEach((elem) => {if (elem.checked) {formData['question5'] = elem.value}})
+    
+    formData['text-question1'] = document.getElementById('text-question1').value
+    formData['text-question2'] = document.getElementById('text-question2').value
+    formData['text-question3'] = document.getElementById('text-question3').value
+    formData['text-question4'] = document.getElementById('text-question4').value
+    formData['text-question5'] = document.getElementById('text-question5').value
+
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            modalOverlay.classList.add('show')
+            submitBtn.disabled = false
+            submitBtn.textContent = "Отправить"
+        } else {
+            console.error(xhr.error)
         }
-    });
+    }
 
-    // Close modal with Escape key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && modalOverlay.classList.contains('show')) {
-            modalOverlay.classList.remove('show');
-        }
-    });
-});
+    xhr.send(JSON.stringify(formData))
+}
