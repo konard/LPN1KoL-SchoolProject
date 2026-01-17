@@ -23,7 +23,7 @@ h1 {
 }
 
 .content {
-    min-height: 100vh;
+    height: 100vh;
     width: 100vw;
     overflow-y: auto;
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
@@ -34,20 +34,7 @@ h1 {
 }
 
 .content::-webkit-scrollbar {
-    width: 8px;
-}
-
-.content::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.content::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 4px;
-}
-
-.content::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 0, 0, 0.3);
+    display: none;
 }
 
 .survey-container {
@@ -157,46 +144,3 @@ h1 {
     transform: scale(0.98);
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
-    .survey-container {
-        padding: 2rem 1.5rem;
-        margin: 1rem auto;
-    }
-
-    h1 {
-        font-size: 1.75rem;
-    }
-
-    .question-title {
-        font-size: 1rem;
-    }
-
-    .submit-btn {
-        width: 100%;
-    }
-}
-
-@media (max-width: 480px) {
-    .content {
-        padding: 1rem 0.5rem;
-    }
-
-    .survey-container {
-        padding: 1.5rem 1rem;
-        border-radius: 8px;
-    }
-
-    h1 {
-        font-size: 1.5rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .question-title {
-        font-size: 0.95rem;
-    }
-
-    .radio-option span {
-        font-size: 0.9rem;
-    }
-}
