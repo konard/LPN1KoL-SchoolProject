@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 450;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+}
+
+main, body{
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.content {
+    height: 100vh;
+    width: 100vw;
+    overflow: scroll;
+    background: whitesmoke;
+}
+
+.content::-webkit-scrollbar{
+    display: none;
+}
