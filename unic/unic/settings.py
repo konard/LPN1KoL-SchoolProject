@@ -90,4 +90,5 @@ else:
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+PASSWORD = os.getenv('PASSWORD', '')
 API_KEY = os.getenv('API_KEY', '')
